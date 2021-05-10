@@ -1,0 +1,10 @@
+SELECT loan.id as loanID, loan.amount as loanAmount, u.id as userID, loan.loan_status as loanLoanStatus, 
+u.created as userCreated, t.transaction_fee as transaction_fee, t.t_type as t_type
+FROM loans loan
+JOIN users u
+on loan.user_id = u.id 
+JOIN transactions t
+on t.user_id = u.id
+WHERE (loan.loan_status = 'active' or loan.loan_status = 'repaid') and t.t_type = 'disbursement' 
+ORDER BY u.created DESC
+;

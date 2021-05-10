@@ -1,0 +1,6 @@
+SELECT count(loans.id) as numLoansPerMonth, sum(amount) as totalAmount, avg(amount) as avgLoan,
+min(amount) as smallestLoan, max(amount) as largestLoan,DATE_TRUNC('month', Created) As month
+FROM loans 
+GROUP BY DATE_TRUNC('month', Created)
+ORDER BY month desc
+;
